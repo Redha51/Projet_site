@@ -13,7 +13,7 @@ CREATE TABLE user(
     user_uptade_at DATE
 );
 
-CREATE TABLE Operation(
+CREATE TABLE operation(
     ope_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     ope_amount INT NOT NULL,
     ope_type VARCHAR (50) NOT NULL,
