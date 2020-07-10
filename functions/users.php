@@ -20,7 +20,7 @@ class Users {
         $this->create_at = $create_at;
     }
 
-    public function inscription($email, $lastName, )
+    public function inscription($email, $lastName, $firstName, $password, $birthday)
 
     public function verificationMail($id, $email) {
         if ($_POST['email'] )
