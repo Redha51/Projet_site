@@ -1,5 +1,6 @@
 <?php
+include('include/head.php');
 include('include/header.php');
-include('include/menu.php');
+$pageTitle = "Accueil";
 
 ?>
