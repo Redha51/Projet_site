@@ -40,6 +40,7 @@ class UserModel extends CoreModel {
     return $table;
     }
 
+    
     public function connexion ($email, $password) : void {
         if (isset($_POST['email'])){
             $query = "SELECT * FROM `user` WHERE user_email='$email' and user_password='$password'";
@@ -49,13 +50,10 @@ class UserModel extends CoreModel {
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             if($result){
-                $_SESSION['email'] = $this->getEmail();
-                $_SESSION['password'] = $this->getPassword();
-
+                $_SESSION['connexion'] = $result;
                 echo 'Vous êtes connecté !';
             }else{
-
-                die("Connexion impossible, veuillez vérifier vos identifiants");
+                echo("Connexion impossible, veuillez vérifier vos identifiants");
             }
         }
     }
@@ -76,7 +74,6 @@ class UserModel extends CoreModel {
      */ 
     public function setEmail($email)
     {
-        $email = stripslashes($_POST['email']);
         $this->email = $email;
         return $this->email;
     }
@@ -96,7 +93,6 @@ class UserModel extends CoreModel {
      */ 
     public function setPassword($password)
     {
-        $password = stripslashes($_POST['password']);
         $this->password = $password;
         return $this->password;
     }

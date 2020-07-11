@@ -1,8 +1,7 @@
 <?php
-
+session_start();
 use Libraries\Models\UserModel;
 
-session_start();
 $pageTitle = "Connexion";
 
 include_once('include/head.php');
@@ -17,9 +16,9 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $user->setEmail($_POST['email']);
     $user->connexion($email, $password);
 }
-
-if (!UserModel::isConnected()) { ?>
-
+var_dump($_SESSION);
+if (!UserModel::isConnected()) {   
+?>
 <form method="post" action="connexion.php">
 <fieldset>
 <legend>Connexion</legend>
