@@ -1,24 +1,19 @@
 <?php
-
-use Libraries\Models\UserModel;
-
 session_start();
+
 $pageTitle = "Connexion";
 
 include_once('include/head.php');
 include_once('include/header.php');
-include_once('libraries/Models/UserModel.php');
-include_once('libraries/Utils/User.php');
-
-$user = new UserModel();
+include_once('libraries/models/User.php');
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
-    $password = $user->setPassword($_POST['password']);
-    $email = $user->setEmail($_POST['email']);
+    $user = new Users();
+    $email = $_POST['email'];
+    $password = $_POST['password'];
     $user->connexion($email, $password);
 }
-
-if (!UserModel::isConnected()) { ?>
+?>
 
 <form method="post" action="connexion.php">
 <fieldset>
@@ -30,9 +25,5 @@ if (!UserModel::isConnected()) { ?>
 </fieldset>
 <p><input type="submit" value="Connexion" /></p></form>
 <a href="./inscription.php">Pas encore inscrit ?</a>
-
-<?php
-}
-?>
-
+    
 </div>
